@@ -4,11 +4,7 @@ import com.damon.constant.trace.TraceConstant;
 import com.damon.random.IDefaultRandomTrace;
 import com.damon.random.impl.DefaultTraceSupplier;
 import com.damon.ttl.mdc.TtlMdcUtil;
-import com.damon.util.Util;
 import org.slf4j.MDC;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletResponse;
@@ -18,14 +14,9 @@ import java.io.IOException;
  * @author damon
  */
 public class WebRequestTraceFilter implements Filter{
-    @Value("${response-head}")
-    private String                       responseHeadKey = "R-X-Ruhnn-TraceId";
+    private final String                       responseHeadKey = "R-X-Ruhnn-TraceId";
 
-    private final IDefaultRandomTrace<String>  iDefaultRandomTrace;
-
-    {
-        iDefaultRandomTrace = new DefaultTraceSupplier();
-    }
+    private final IDefaultRandomTrace<String>  defaultRandomTrace = new DefaultTraceSupplier();
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -35,7 +26,7 @@ public class WebRequestTraceFilter implements Filter{
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         TtlMdcUtil.MdcTtlRemoveContainer mdcTtlRemoveContainer = doTrace();
-        ((HttpServletResponse) servletResponse).setHeader(responseHeadKey, MDC.get(TraceConstant.TRACE_KEY));
+        ((HttpServletResponse) servletResponse).setHeader(getResponseHeadKey(), MDC.get(TraceConstant.TRACE_KEY));
         filterChain.doFilter(servletRequest,servletResponse);
         mdcTtlRemoveContainer.remove();
     }
@@ -46,6 +37,20 @@ public class WebRequestTraceFilter implements Filter{
     }
 
     private TtlMdcUtil.MdcTtlRemoveContainer doTrace(){
-         return TtlMdcUtil.construct(iDefaultRandomTrace.get(), TraceConstant.TRACE_KEY);
+         return TtlMdcUtil.construct(getDefaultRandomTrace().get(), TraceConstant.TRACE_KEY);
+    }
+
+    /**
+     * @return response header key
+     */
+    protected String getResponseHeadKey() {
+        return responseHeadKey;
+    }
+
+    /**
+     * @return implementation of traceId
+     */
+    protected IDefaultRandomTrace<String> getDefaultRandomTrace() {
+        return defaultRandomTrace;
     }
 }

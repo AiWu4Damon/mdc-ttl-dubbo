@@ -55,6 +55,12 @@
             <artifactId>servlet-api</artifactId>
             <version>${servlet-version}</version>
         </dependency>
+        <!--spring aop依赖-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
     </dependencies>
 
     <distributionManagement>

@@ -1,17 +1,20 @@
 package com.damon.ttl.mdc;
 
 import com.alibaba.ttl.TransmittableThreadLocal;
-import com.damon.util.Util;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 
 /**
  * @author damon
  */
 public class TtlMdcUtil {
+    private static final Logger logger = LoggerFactory.getLogger(TtlMdcUtil.class);
 
     public static MdcTtlRemoveContainer construct(String traceId,final String key){
-        if (traceId == null){
-            traceId = Util.getDefaultRandomStr();
+        String oldTraceId = MDC.get(key);
+        if (oldTraceId != null){
+            logger.warn("warn@traceId case memory leak,oldTraceId:{},newTraceId:{}",oldTraceId,traceId);
         }
         TransmittableThreadLocal<String> traceIdTtl = new TransmittableThreadLocal<String>(){
             @Override
