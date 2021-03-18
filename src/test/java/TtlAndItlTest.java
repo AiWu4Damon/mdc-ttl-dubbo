@@ -10,6 +10,7 @@ public class TtlAndItlTest {
 //        transmittableThreadLocal.set("transmittableThreadLocal");
         final InheritableThreadLocal<String> inheritableThreadLocal = new InheritableThreadLocal<String>();
         inheritableThreadLocal.set("inheritableThreadLocal");
+
 //        Runnable r = () -> System.out.println(transmittableThreadLocal.get());
         Runnable r2 = () -> System.out.println(inheritableThreadLocal.get());
 
