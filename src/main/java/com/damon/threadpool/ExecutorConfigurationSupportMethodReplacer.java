@@ -2,7 +2,6 @@ package com.damon.threadpool;
 
 import com.alibaba.ttl.TtlCallable;
 import com.alibaba.ttl.TtlRunnable;
-import com.alibaba.ttl.spi.TtlEnhanced;
 import org.springframework.beans.factory.support.MethodReplacer;
 import org.springframework.core.task.TaskRejectedException;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
