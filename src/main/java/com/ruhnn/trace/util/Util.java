@@ -1,4 +1,4 @@
-package com.damon.util;
+package com.ruhnn.trace.util;
 
 import java.util.UUID;
 

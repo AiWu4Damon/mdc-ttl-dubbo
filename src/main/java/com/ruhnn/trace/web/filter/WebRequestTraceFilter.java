@@ -1,9 +1,9 @@
-package com.damon.web.filter;
+package com.ruhnn.trace.web.filter;
 
-import com.damon.constant.trace.TraceConstant;
-import com.damon.random.IDefaultRandomTrace;
-import com.damon.random.impl.DefaultTraceSupplier;
-import com.damon.ttl.mdc.TtlMdcUtil;
+import com.ruhnn.trace.constant.trace.TraceConstant;
+import com.ruhnn.trace.random.IDefaultRandomTrace;
+import com.ruhnn.trace.random.impl.DefaultTraceSupplier;
+import com.ruhnn.trace.ttl.mdc.TtlMdcUtil;
 import org.slf4j.MDC;
 
 import javax.servlet.*;

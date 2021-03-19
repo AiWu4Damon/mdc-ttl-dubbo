@@ -1,2 +1,2 @@
-ttlMdcDubboConsumer=com.damon.dubbo.filter.consumer.TtlMdcDubboConsumerFilter
-ttlMdcDubboProvider=com.damon.dubbo.filter.provider.TtlMdcDubboProviderFilter
+ttlMdcDubboConsumer=TtlMdcDubboConsumerFilter
+ttlMdcDubboProvider=TtlMdcDubboProviderFilter

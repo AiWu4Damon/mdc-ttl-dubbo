@@ -1,6 +1,6 @@
-package com.damon.random.impl;
+package com.ruhnn.trace.random.impl;
 
-import com.damon.random.IDefaultRandomTrace;
+import com.ruhnn.trace.random.IDefaultRandomTrace;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;

@@ -1,4 +1,4 @@
-package com.damon.constant.trace;
+package com.ruhnn.trace.constant.trace;
 
 /**
  * @author damon

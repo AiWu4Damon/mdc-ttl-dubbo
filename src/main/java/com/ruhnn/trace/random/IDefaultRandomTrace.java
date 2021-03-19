@@ -1,4 +1,4 @@
-package com.damon.random;
+package com.ruhnn.trace.random;
 
 import java.util.function.Supplier;
 

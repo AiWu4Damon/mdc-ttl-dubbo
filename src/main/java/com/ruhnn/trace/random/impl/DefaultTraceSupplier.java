@@ -1,6 +1,6 @@
-package com.damon.random.impl;
+package com.ruhnn.trace.random.impl;
 
-import com.damon.util.Util;
+import com.ruhnn.trace.util.Util;
 
 /**
  * @author damon

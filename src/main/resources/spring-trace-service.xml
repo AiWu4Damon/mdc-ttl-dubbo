@@ -3,9 +3,9 @@
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
-	<bean id="defaultTraceSupplier" class="com.damon.random.impl.DefaultTraceSupplier"/>
+	<bean id="defaultTraceSupplier" class="com.ruhnn.trace.random.impl.DefaultTraceSupplier"/>
 
-	<bean id="ttlSupportMethodReplacer" class="com.damon.threadpool.ExecutorConfigurationSupportMethodReplacer"/>
+	<bean id="ttlSupportMethodReplacer" class="com.ruhnn.trace.threadpool.ExecutorConfigurationSupportMethodReplacer"/>
 
-	<bean id="taskAopTraceEnhancer" class="com.damon.dubbo.aop.TaskAopTraceEnhancer" />
+	<bean id="taskAopTraceEnhancer" class="com.ruhnn.trace.dubbo.aop.TaskAopTraceEnhancer" />
 </beans>

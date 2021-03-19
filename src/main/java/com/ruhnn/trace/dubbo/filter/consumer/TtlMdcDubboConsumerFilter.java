@@ -1,15 +1,13 @@
-package com.damon.dubbo.filter.consumer;
+package com.ruhnn.trace.dubbo.filter.consumer;
 
 import com.alibaba.dubbo.common.Constants;
 import com.alibaba.dubbo.common.extension.Activate;
 import com.alibaba.dubbo.rpc.*;
-import com.damon.constant.trace.TraceConstant;
-import com.damon.util.Util;
+import com.ruhnn.trace.constant.trace.TraceConstant;
 import org.slf4j.MDC;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 /**
  * @author damon
