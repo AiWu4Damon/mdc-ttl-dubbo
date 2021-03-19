@@ -21,7 +21,6 @@ class ExecutorConfigurationSupportMethodReplacer implements MethodReplacer {
 
     @Override
     public Object reimplement(Object obj, Method method, Object[] args) throws Throwable {
-        //do method
         if (!(obj instanceof ThreadPoolTaskExecutor)){
             return null;
         }
@@ -31,7 +30,7 @@ class ExecutorConfigurationSupportMethodReplacer implements MethodReplacer {
         Object o = args[0];
         Future<?> future = null;
         if (executeMethodName.equals(method.getName())
-                && o instanceof Runnable && !(o instanceof TtlEnhanced)){
+                && o instanceof Runnable){
             if (args.length == 2 ){
                 execute((Runnable)o,(long)args[1],threadPoolExecutor);
             }else{
@@ -53,7 +52,7 @@ class ExecutorConfigurationSupportMethodReplacer implements MethodReplacer {
 
     public Future<?> submit(Runnable task,ThreadPoolExecutor executor) {
         try {
-            task = TtlRunnable.get(task);
+            task = TtlRunnable.get(task,false,true);
             return executor.submit(task);
         } catch (RejectedExecutionException var4) {
             throw new TaskRejectedException("Executor [" + executor + "] did not accept task: " + task, var4);
@@ -62,7 +61,7 @@ class ExecutorConfigurationSupportMethodReplacer implements MethodReplacer {
 
     public <T> Future<T> submit(Callable<T> task,ThreadPoolExecutor executor) {
         try {
-            task = TtlCallable.get(task);
+            task = TtlCallable.get(task,false,true);
             return executor.submit(task);
         } catch (RejectedExecutionException var4) {
             throw new TaskRejectedException("Executor [" + executor + "] did not accept task: " + task, var4);
@@ -71,7 +70,7 @@ class ExecutorConfigurationSupportMethodReplacer implements MethodReplacer {
 
     public void execute(Runnable task,ThreadPoolExecutor executor) {
         try {
-            task = TtlRunnable.get(task);
+            task = TtlRunnable.get(task,false,true);
             executor.execute(task);
         } catch (RejectedExecutionException var4) {
             throw new TaskRejectedException("Executor [" + executor + "] did not accept task: " + task, var4);
