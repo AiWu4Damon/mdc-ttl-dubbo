@@ -1,2 +1,2 @@
-ttlMdcDubboConsumer=TtlMdcDubboConsumerFilter
-ttlMdcDubboProvider=TtlMdcDubboProviderFilter
+ttlMdcDubboConsumer=com.ruhnn.trace.dubbo.filter.consumer.TtlMdcDubboConsumerFilter
+ttlMdcDubboProvider=com.ruhnn.trace.dubbo.filter.provider.TtlMdcDubboProviderFilter
