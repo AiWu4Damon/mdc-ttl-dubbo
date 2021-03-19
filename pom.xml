@@ -9,7 +9,6 @@
     <version>1.0.0-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <ruhnn.nexus.repository.url>http://maven.youdongxi.com</ruhnn.nexus.repository.url>
         <springframework.version>4.3.10.RELEASE</springframework.version>
         <mysql.connector.version>5.1.39</mysql.connector.version>
         <transmittable.version>2.13.0-SNAPSHOT</transmittable.version>
@@ -62,17 +61,4 @@
             <version>${springframework.version}</version>
         </dependency>
     </dependencies>
-
-    <distributionManagement>
-        <repository>
-            <id>ruhnn-release</id>
-            <name>ruhnn repository release</name>
-            <url>${ruhnn.nexus.repository.url}/repository/maven-releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>ruhnn-snapshots</id>
-            <name>ruhnn repository snapshots</name>
-            <url>${ruhnn.nexus.repository.url}/repository/maven-snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
 </project>
