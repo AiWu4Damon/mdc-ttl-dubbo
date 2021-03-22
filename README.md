@@ -9,22 +9,28 @@
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  拉取仓库install到本地(or deploy到本地私服)
+2.  引入依赖
+3.  web项目将com.ruhnn.trace.web.filter.WebRequestTraceFilter设置到web.xml中
+4.  将spring-trace-service.xml引入项目中
+5.  如需线程池中打印出traceId则需要在Spring配置文件中用replace-method 将提交到线程池的方法替换掉
 
 #### 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+web项目引入此依赖 要做链路跟踪 需要做的几点
+1.请求从web层中进入会在过滤链生成traceId 如需自定义生成traceId的规则 可以实现IDefaultRandomTrace接口
+
+2.dubbo服务端或消费端无需要多余的配置即可将traceId传递下去
+
+3.线程池下传递主要依靠了TransmittableThreadLocal组件,在我Spring配置文件中可以用replace-method将提交到线程池中的方法替换成
+ExecutorConfigurationSupportMethodReplacer 此方法中将Runnable和Callable 进行修饰成TtlRunnable和TtlCallable
+（ps 如不使用线程池可以无视）
+
+4.@Trace注解可以将通过Spring调用的方法拦截生成traceId
 
 #### 参与贡献
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+1. damon0425@outlook.com(damon)
 
 
 #### 特技
