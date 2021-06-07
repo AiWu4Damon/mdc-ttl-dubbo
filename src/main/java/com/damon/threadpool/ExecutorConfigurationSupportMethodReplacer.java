@@ -12,6 +12,9 @@ import java.util.concurrent.*;
 /**
  * obj have method of submit
  * replace submit to the other
+ * support four methods,
+ * such as:
+ *   submit(Runnable),submit(Callable),execute(Runnable,long),execute(Runnable)
  * @author damon
  */
 class ExecutorConfigurationSupportMethodReplacer implements MethodReplacer {
